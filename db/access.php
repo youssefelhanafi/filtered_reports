@@ -24,20 +24,28 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-
-/**
- * filtered_reports block
- *
- * @package    block_filtered_reports
- * @copyright  2019 Youssef Elhanafi (ysf.elhanafi@gmail.com)
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
-
-
-class block_filtered_reports extends block_base { // block class definition
-    public function init() { // This is essential for all blocks, and its purpose is to give values to any class member variables that need instantiating. 
-        $this->title = get_string('filtered_reports', 'block_filtered_reports');
-    }
-    // The PHP tag and the curly bracket for the class definition 
-    // will only be closed after there is another function added in the next section.
-}
+    $capabilities = array(
+ 
+    'block/filtered_reports:myaddinstance' => array(
+        'captype' => 'write',
+        'contextlevel' => CONTEXT_SYSTEM,
+        'archetypes' => array(
+            'user' => CAP_ALLOW
+        ),
+ 
+        'clonepermissionsfrom' => 'moodle/my:manageblocks'
+    ),
+ 
+    'block/filtered_reports:addinstance' => array(
+        'riskbitmask' => RISK_SPAM | RISK_XSS,
+ 
+        'captype' => 'write',
+        'contextlevel' => CONTEXT_BLOCK,
+        'archetypes' => array(
+            'editingteacher' => CAP_ALLOW,
+            'manager' => CAP_ALLOW
+        ),
+ 
+        'clonepermissionsfrom' => 'moodle/site:manageblocks'
+    ),
+);
