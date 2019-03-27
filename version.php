@@ -25,28 +25,6 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-    $capabilities = array(
- 
-    'block/filtered_reports:myaddinstance' => array(
-        'captype' => 'write',
-        'contextlevel' => CONTEXT_SYSTEM,
-        'archetypes' => array(
-            'user' => CAP_ALLOW
-        ),
- 
-        'clonepermissionsfrom' => 'moodle/my:manageblocks'
-    ),
- 
-    'block/filtered_reports:addinstance' => array(
-        'riskbitmask' => RISK_SPAM | RISK_XSS,
- 
-        'captype' => 'write',
-        'contextlevel' => CONTEXT_BLOCK,
-        'archetypes' => array(
-            'editingteacher' => CAP_ALLOW,
-            'manager' => CAP_ALLOW
-        ),
- 
-        'clonepermissionsfrom' => 'moodle/site:manageblocks'
-    ),
-);
+$plugin->component = 'block_filtered_reports';  // Recommended since 2.0.2 (MDL-26035). Required since 3.0 (MDL-48494)
+$plugin->version = 2019032701;  // YYYYMMDDHH (year, month, day, 24-hr time)
+$plugin->requires = 2018051700; // YYYYMMDDHH (This is the release version for Moodle 2.0)

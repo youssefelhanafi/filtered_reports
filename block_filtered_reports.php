@@ -18,6 +18,7 @@
  * filtered_reports block
  *
  * @package    block_filtered_reports
+ * @author     Youssef Elhanafi <ysf.elhanafi@gmail.com>
  * @copyright  2019 Youssef Elhanafi (ysf.elhanafi@gmail.com)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -37,6 +38,18 @@ defined('MOODLE_INTERNAL') || die();
 class block_filtered_reports extends block_base { // block class definition
     public function init() { // This is essential for all blocks, and its purpose is to give values to any class member variables that need instantiating. 
         $this->title = get_string('filtered_reports', 'block_filtered_reports');
+    }
+
+    public function get_content() {
+        if ($this->content !== null) {
+          return $this->content;
+        }
+     
+        $this->content         =  new stdClass;
+        $this->content->text   = 'The content of our Filtered Reports block!';
+        $this->content->footer = 'Footer here...';
+     
+        return $this->content;
     }
     // The PHP tag and the curly bracket for the class definition 
     // will only be closed after there is another function added in the next section.
