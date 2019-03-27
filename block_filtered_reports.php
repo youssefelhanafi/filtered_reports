@@ -36,6 +36,7 @@ defined('MOODLE_INTERNAL') || die();
 
 
 class block_filtered_reports extends block_base { // block class definition
+    
     public function init() { // This is essential for all blocks, and its purpose is to give values to any class member variables that need instantiating. 
         $this->title = get_string('filtered_reports', 'block_filtered_reports');
     }
@@ -46,10 +47,24 @@ class block_filtered_reports extends block_base { // block class definition
         }
      
         $this->content         =  new stdClass;
-        $this->content->text   = 'The content of our Filtered Reports block!';
+        $this->content->text   = 'The content of our Filtered block!';
         $this->content->footer = 'Footer here...';
      
         return $this->content;
+    }
+    
+    public function specialization() {
+        if (isset($this->config)) {
+            if (empty($this->config->title)) {
+                $this->title = get_string('defaulttitle', 'block_filtered_reports');            
+            } else {
+                $this->title = $this->config->title;
+            }
+     
+            if (empty($this->config->text)) {
+                $this->config->text = get_string('defaulttext', 'block_filtered_reports');
+            }    
+        }
     }
     // The PHP tag and the curly bracket for the class definition 
     // will only be closed after there is another function added in the next section.

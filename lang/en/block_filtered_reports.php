@@ -28,3 +28,5 @@ $string['pluginname'] = 'Filtered reports';
 $string['filtered_reports'] = 'Filtered reports';
 $string['filtered_reports:addinstance'] = 'Add a new Filtered reports block';
 $string['filtered_reports:myaddinstance'] = 'Add a new Filtered reports block to the My Moodle page';
+$string['contentinputlabel'] = 'Block Content';
+$string['titleinputlabel'] = 'Block Title';

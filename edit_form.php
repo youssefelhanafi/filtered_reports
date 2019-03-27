@@ -23,8 +23,23 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
-
-$plugin->component = 'block_filtered_reports';  // Recommended since 2.0.2 (MDL-26035). Required since 3.0 (MDL-48494)
-$plugin->version = 2019032704;  // YYYYMMDDHH (year, month, day, 24-hr time)
-$plugin->requires = 2018051700; // YYYYMMDDHH (This is the release version for Moodle 2.0)
+class block_filtered_reports_edit_form extends block_edit_form {
+ 
+    protected function specific_definition($mform) {
+ 
+        // Section header title according to language file.
+        $mform->addElement('header', 'config_header', get_string('blocksettings', 'block'));
+ 
+        // A sample string variable with a default value.
+        /* $mform->addElement('text', 'config_text', get_string('contentinputlabel', 'block_filtered_reports'));
+        $mform->setDefault('config_text', 'default value');
+        $mform->setType('config_text', PARAM_RAW); */
+        
+        // A sample string variable with a default value.
+        $mform->addElement('text', 'config_title', get_string('titleinputlabel', 'block_filtered_reports'));
+        $mform->setDefault('config_title', 'default title value');
+        $mform->setType('config_title', PARAM_TEXT);
+          
+ 
+    }
+}
