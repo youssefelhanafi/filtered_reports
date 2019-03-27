@@ -53,17 +53,23 @@ class block_filtered_reports extends block_list { // block class definition
         return $this->content;
     } */
     public function get_content() {
+
+        global $COURSE;
+        global $USER;
+
         if ($this->content !== null) {
           return $this->content;
         }
        
         $this->content         = new stdClass;
         $this->content->items  = array();
-        $this->content->icons  = array();
-        $this->content->footer = 'Footer here...';
-       
+        //$this->content->icons  = array();
+        //$this->content->footer = 'Footer here...';
+        $this->content->items[] = html_writer::tag('p',$USER->firstname.' '.$USER->lastname);
         $this->content->items[] = html_writer::tag('a', 'Menu Option 1', array('href' => 'some_file.php'));
-        $this->content->icons[] = html_writer::empty_tag('img', array('src' => 'images/icons/report.png', 'class' => 'icon'));
+        //$this->content->icons[] = html_writer::empty_tag('img', array('src' => 'images/icons/report.png', 'class' => 'icon'));
+        $this->content->items[] = html_writer::tag('a', 'Menu Option 2', array('href' => 'some_file.php'));
+        //$this->content->icons[] = html_writer::empty_tag('img', array('src' => 'images/icons/report.png', 'class' => 'icon'));
        
         // Add more list items here
        
