@@ -23,12 +23,17 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+defined('MOODLE_INTERNAL') || die();
 
-$string['pluginname'] = 'Filtered reports';
-$string['filtered_reports'] = 'Filtered reports';
-$string['filtered_reports:addinstance'] = 'Add a new Filtered reports block';
-$string['filtered_reports:myaddinstance'] = 'Add a new Filtered reports block to the My Moodle page';
-$string['contentinputlabel'] = 'Block Content';
-$string['titleinputlabel'] = 'Block Title';
-$string['labelsetbackground'] = 'Set Background';
-$string['descsetbackground'] = 'Description of  ....';
+$settings->add(new admin_setting_heading(
+    'headerconfig',
+    get_string('headerconfig', 'block_filtered_reports'),
+    get_string('descconfig', 'block_filtered_reports')
+));
+
+$settings->add(new admin_setting_configcheckbox(
+    'filtered_reports/Set_Background',
+    get_string('labelsetbackground', 'block_filtered_reports'),
+    get_string('descsetbackground', 'block_filtered_reports'),
+    '0'
+));

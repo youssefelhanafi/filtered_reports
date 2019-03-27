@@ -35,13 +35,13 @@ defined('MOODLE_INTERNAL') || die();
  */
 
 
-class block_filtered_reports extends block_base { // block class definition
+class block_filtered_reports extends block_list { // block class definition
     
     public function init() { // This is essential for all blocks, and its purpose is to give values to any class member variables that need instantiating. 
         $this->title = get_string('filtered_reports', 'block_filtered_reports');
     }
 
-    public function get_content() {
+    /* public function get_content() {
         if ($this->content !== null) {
           return $this->content;
         }
@@ -50,6 +50,23 @@ class block_filtered_reports extends block_base { // block class definition
         $this->content->text   = 'The content of our Filtered block!';
         $this->content->footer = 'Footer here...';
      
+        return $this->content;
+    } */
+    public function get_content() {
+        if ($this->content !== null) {
+          return $this->content;
+        }
+       
+        $this->content         = new stdClass;
+        $this->content->items  = array();
+        $this->content->icons  = array();
+        $this->content->footer = 'Footer here...';
+       
+        $this->content->items[] = html_writer::tag('a', 'Menu Option 1', array('href' => 'some_file.php'));
+        $this->content->icons[] = html_writer::empty_tag('img', array('src' => 'images/icons/report.png', 'class' => 'icon'));
+       
+        // Add more list items here
+       
         return $this->content;
     }
     
@@ -65,6 +82,20 @@ class block_filtered_reports extends block_base { // block class definition
                 $this->config->text = get_string('defaulttext', 'block_filtered_reports');
             }    
         }
+    }
+
+    public function instance_allow_multiple() {
+        return false;
+    }
+
+    function has_config() {
+        return true;
+    }
+
+    public function html_attributes() {
+        $attributes = parent::html_attributes(); // Get default values
+        $attributes['class'] .= ' block_'. $this->name(); // Append our class to class attribute
+        return $attributes;
     }
     // The PHP tag and the curly bracket for the class definition 
     // will only be closed after there is another function added in the next section.
