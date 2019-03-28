@@ -30,9 +30,35 @@ $PAGE->set_heading(get_string('edithtml', 'block_filtered_reports'));
  
 $filtered_reports = new filtered_reports_form();
 
-echo $OUTPUT->header();
+$toform['blockid'] = $blockid;
+$toform['courseid'] = $courseid;
+$filtered_reports->set_data($toform);
+
+if($filtered_reports->is_cancelled()) {
+    // Cancelled forms redirect to the course main page.
+    $courseurl = new moodle_url('/course/view.php', array('id' => $id));
+    redirect($courseurl);
+} else if ($fromform = $filtered_reports->get_data()) {
+    // We need to add code to appropriately act on and store the submitted data
+    // but for now we will just redirect back to the course main page.
+    $courseurl = new moodle_url('/course/view.php', array('id' => $courseid));
+    //redirect($courseurl);
+    print_object($fromform);
+} else {
+    // form didn't validate or this is the first display
+    $site = get_site();
+    echo $OUTPUT->header();
+    $filtered_reports->display();
+    echo $OUTPUT->footer();
+}
+
+// We need to add code to appropriately act on and store the submitted data
+if (!$DB->insert_record('block_filtered_reports', $fromform)) {
+    print_error('inserterror', 'block_filtered_reports');
+}
+/* echo $OUTPUT->header();
 $filtered_reports->display();
-echo $OUTPUT->footer();
+echo $OUTPUT->footer(); */
  
 //$filtered_reports->display();
 ?>
