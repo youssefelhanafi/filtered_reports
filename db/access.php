@@ -19,7 +19,7 @@
  *
  * @package    block_filtered_reports
  * @author     Youssef Elhanafi <ysf.elhanafi@gmail.com>
- * @copyright  2019 Youssef Elhanafi (ysf.elhanafi@gmail.com)
+ * @copyright  2019 Youssef Elhanafi 
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 

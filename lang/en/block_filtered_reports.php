@@ -19,7 +19,7 @@
  *
  * @package    block_filtered_reports
  * @author     Youssef Elhanafi <ysf.elhanafi@gmail.com>
- * @copyright  2019 Youssef Elhanafi (ysf.elhanafi@gmail.com)
+ * @copyright  2019 Youssef Elhanafi 
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -32,3 +32,8 @@ $string['contentinputlabel'] = 'Block Content';
 $string['titleinputlabel'] = 'Block Title';
 $string['labelsetbackground'] = 'Set Background';
 $string['descsetbackground'] = 'Description of  ....';
+$string['addpage'] = 'Form page ';
+$string['textfields'] = 'Form input';
+$string['edithtml'] = 'Filtered Reports';
+$string['filtered_reportssettings'] = 'Filtered Reports';
+$string['editpage'] = 'Edit page';

@@ -19,7 +19,7 @@
  *
  * @package    block_filtered_reports
  * @author     Youssef Elhanafi <ysf.elhanafi@gmail.com>
- * @copyright  2019 Youssef Elhanafi (ysf.elhanafi@gmail.com)
+ * @copyright  2019 Youssef Elhanafi 
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -30,7 +30,7 @@ defined('MOODLE_INTERNAL') || die();
  * filtered_reports block
  *
  * @package    block_filtered_reports
- * @copyright  2019 Youssef Elhanafi (ysf.elhanafi@gmail.com)
+ * @copyright  2019 Youssef Elhanafi 
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -72,7 +72,8 @@ class block_filtered_reports extends block_list { // block class definition
         //$this->content->icons[] = html_writer::empty_tag('img', array('src' => 'images/icons/report.png', 'class' => 'icon'));
        
         // Add more list items here
-       
+        $url = new moodle_url('/blocks/filtered_reports/view.php', array('blockid' => $this->instance->id, 'courseid' => $COURSE->id));
+        $this->content->footer = html_writer::link($url, get_string('addpage', 'block_filtered_reports'));
         return $this->content;
     }
     
